@@ -1,4 +1,4 @@
-import tools
+import random
 def PlayGame():
     min = 1
     max = 100
@@ -30,9 +30,3 @@ def PlayGame():
             print("再大一點")
             min = keyin + 1
         print(f"您已經猜了{count}次")
-while True:
-    PlayGame()
-    again = input("您是否要再來一次?(y/n)")
-    if again == "n":
-        break           
-print("應用程式結束")

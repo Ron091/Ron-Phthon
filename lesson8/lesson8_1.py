@@ -31,8 +31,7 @@ def PlayGame():
             min = keyin + 1
         print(f"您已經猜了{count}次")
 while True:
-    PlayGame
-    print("您是否要再來一次?(y/n)")
+    PlayGame()
     again = input("您是否要再來一次?(y/n)")
     if again == "n":
         break           

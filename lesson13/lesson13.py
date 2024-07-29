@@ -22,13 +22,8 @@ def connect_youbike() -> Response | str:
         return response
 def search_station(Response,district):
     data:list[dict] = Response.json()    
-    district_stations = []
-    for station in data:
-        if station['sarea'] == district:
-            district_stations.append(station)
-    return district_stations        
-
-
+    district_stations = [district for station in data if station['sarea'] == district]    
+    return district_stations
 def main():
     response:Response | str = connect_youbike() 
     if not isinstance(response,Response):

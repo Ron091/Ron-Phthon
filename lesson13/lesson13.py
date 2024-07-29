@@ -44,8 +44,6 @@ def main():
     district_stations=search_station(response,district)
     if district_stations:
         pprint(district_stations)
-    else:
-        print(f"沒有找到 {district} 行政區的站點資訊。請再輸入一次")
 
 
 if __name__ == '__main__':

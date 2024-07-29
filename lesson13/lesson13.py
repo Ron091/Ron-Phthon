@@ -12,8 +12,8 @@ def bike_conection():
         return Response
 
 def main():
-    response = isinstance(bike_conection,Response)
-    if response:
+    response = bike_conection
+    if isinstance(response,Response):
         while True:
             district = input("請輸入新北市行政區: ")
             district = district + "區"

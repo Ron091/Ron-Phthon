@@ -36,10 +36,11 @@ def main():
     response:Response | str = connect_youbike() 
     if not isinstance(response,Response):
         print(response)
+        return
     
     print("連線成功")
     searea = get_sarea(response)
-    pyip.inputMenu(searea,"請輸入查詢區域\n",numbered=True)
+    district = pyip.inputMenu(searea,"請輸入新北市行政區:\n",numbered=True)
 
     district_stations=search_station(response,district)
     if district_stations:

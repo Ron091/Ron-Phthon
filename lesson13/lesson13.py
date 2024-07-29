@@ -1,4 +1,5 @@
 import requests
+import pyinputplus as pyip
 from requests import Response
 from pprint import pprint
 from requests import ConnectionError,TooManyRedirects,Timeout,HTTPError
@@ -24,20 +25,27 @@ def search_station(Response,district):
     data:list[dict] = Response.json()    
     district_stations = [district for station in data if station['sarea'] == district]    
     return district_stations
+def get_sarea(response):
+    data:list[dict] = response.json()
+    Sarea:set=set()
+    for site in data:
+        Sarea.add(site['sarea'])
+    return Sarea
+
 def main():
     response:Response | str = connect_youbike() 
     if not isinstance(response,Response):
         print(response)
     else:
         print("連線成功")
-        district:str = input("請輸入新北市行政區: ")
-        district += "區"
+        searea = get_sarea(response)
+        pyip.inputMenu(searea,"請輸入查詢區域\n",numbered=True)
+
         district_stations=search_station(response,district)
         if district_stations:
             pprint(district_stations)
         else:
             print(f"沒有找到 {district} 行政區的站點資訊。請再輸入一次")
-
 
 
 if __name__ == '__main__':

@@ -6,6 +6,5 @@ if __name__ == "__main__":
     all_in_out = in_out_imformation(name_list,stations_imfo)
     station_in_out = pd.concat(all_in_out)
     station_in_out.to_csv("進出站人數表.csv")
-    day = ['2020-01-01']
-    print(station_in_out[
-    station_in_out['日期'].isin(day)])
+    data=station_in_out[station_in_out['日期'].isin(['2020-01-01'])]
+    data.to_csv("當日進出站人數.csv")
